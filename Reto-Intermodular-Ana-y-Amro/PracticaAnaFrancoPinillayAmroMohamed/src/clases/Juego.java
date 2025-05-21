@@ -32,8 +32,11 @@ public class Juego {
 		}
 	}
 
-	public void getSiguiente() {
-		enemigos.get(0);
+	public Enemigo getSiguiente() {
+		if (!enemigos.isEmpty()) {
+			return enemigos.get(0);
+		}
+		return null;
 	}
 
 	public boolean terminarRonda() {

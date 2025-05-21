@@ -4,7 +4,6 @@ import java.util.Scanner;
 import clases.Enemigo;
 import clases.Juego;
 import clases.Jugable;
-import clases.Metodos;
 import clases.Puntuacion;
 
 public class Programa {
