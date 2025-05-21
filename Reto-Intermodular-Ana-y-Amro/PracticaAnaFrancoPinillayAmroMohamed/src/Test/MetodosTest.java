@@ -1,7 +1,9 @@
-package clases;
+package Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test; 
+import org.junit.jupiter.api.Test;
+
+import clases.Metodos; 
 public class MetodosTest {
 
 	@Test
