@@ -1,25 +1,37 @@
 package Test;
 
 import static org.junit.Assert.assertEquals;
-import java.io.File;
-import org.junit.jupiter.api.AfterEach;
+import java.io.FileWriter;
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
-
 import clases.Puntuacion;
 
 public class PuntuacionTest {
 
-	@AfterEach
-	public void mostrarPuntuacion() {
-		File archivo = new File("mejorPuntuacion.txt");
-		if (archivo.exists())
-			archivo.delete();
+	private static final String ARCHIVO = "mejorPuntuacion.txt";
+
+	@Test
+	void mostrarPuntuacion() throws Exception {
+		FileWriter fw = new FileWriter("mejorPuntuacion.txt");
+		fw.write("Ana");
+		fw.close();
+		Puntuacion.mostrarPuntuacion();
+	}
+
+	@Test
+	public void obtenerRondasMaximas() throws IOException {
+		try (FileWriter fw = new FileWriter(ARCHIVO)) {
+			fw.write("Ana\n3");
+		}
+		int rondas = Puntuacion.obtenerRondasMaximas();
+		assertEquals(3, rondas);
 	}
 
 	@Test
 	public void guardarPuntuacion() throws Exception {
-		Puntuacion.guardarPuntuacion("tester", 5);
+		Puntuacion.guardarPuntuacion("Ana", 3);
 		int maxRondas = Puntuacion.obtenerRondasMaximas();
-		assertEquals(5, maxRondas);
+		assertEquals(3, maxRondas);
+
 	}
 }
